@@ -1,5 +1,6 @@
 tensorflow==2.15.0
 tensorflowjs==4.17.0
+streamlit
 numpy
 pandas
 matplotlib
