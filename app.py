@@ -4,7 +4,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 import streamlit as st
-from PIL import Image
+from PIL import Image, ImageOps
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL_PATH = BASE_DIR / "tflite" / "model.tflite"
@@ -150,6 +150,20 @@ def prepare_image(
             f"Model mengharapkan {channels} channel, bukan grayscale 1 channel."
         )
 
+    # 1. FIX TRANSPARANSI: Kalau gambar PNG transparan, beri latar putih solid
+    if image.mode in ("RGBA", "LA") or (
+        image.mode == "P" and "transparency" in image.info
+    ):
+        bg = Image.new("RGB", image.size, (255, 255, 255))
+        bg.paste(image, mask=image.split()[3])
+        image = bg
+
+    # 2. FIX PADDING: Tambahkan margin putih 20% di sekeliling gambar
+    # Agar gambar dari internet tidak "menabrak" ujung kanvas dan mirip kertas ujian
+    border_size = int(max(image.size) * 0.2)
+    image = ImageOps.expand(image, border=border_size, fill="white")
+
+    # Lanjut ke proses standar: Grayscale dan Resize
     image = image.convert("L").resize((width, height))
     image_array = np.asarray(image, dtype=np.float32)
 
