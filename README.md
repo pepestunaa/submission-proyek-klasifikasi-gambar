@@ -2,6 +2,18 @@
 
 Project ini berisi model klasifikasi gambar kanji N5 dalam format SavedModel, TFJS, dan TF-Lite. Aplikasi Streamlit tersedia di `app.py` untuk mencoba inferensi dari file gambar.
 
+## Demo Aplikasi
+
+Aplikasi dapat dicoba langsung melalui Streamlit Community Cloud:
+
+[https://kanji-jlpt-n5.streamlit.app/](https://kanji-jlpt-n5.streamlit.app/)
+
+## Contoh Gambar Uji
+
+Berikut contoh gambar kanji yang dapat digunakan untuk mencoba aplikasi:
+
+![Contoh gambar kanji 水](mizu.jpg)
+
 ## Menjalankan Streamlit
 
 1. Install dependency:
