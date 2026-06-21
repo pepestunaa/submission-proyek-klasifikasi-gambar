@@ -1,4 +1,4 @@
-# Submission Proyek Klasifikasi Gambar
+# Submission Proyek Klasifikasi Gambar kanji N5
 
 Project ini berisi model klasifikasi gambar kanji N5 dalam format SavedModel, TFJS, dan TF-Lite. Aplikasi Streamlit tersedia di `app.py` untuk mencoba inferensi dari file gambar.
 
